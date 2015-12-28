@@ -5,41 +5,40 @@ Linux tips
 ----------
 
 ### Recursively chmod directories only
-find . -type d -exec chmod 755 {} \;
+  find . -type d -exec chmod 755 {} \;
 
 ### Recursively chmod files only
-find . -type f -exec chmod 644 {} \;
+  find . -type f -exec chmod 644 {} \;
 
 ### Recursively rm *.tar.gz
-find . -name "*.tar.gz" -exec rm {} \;
+  find . -name "*.tar.gz" -exec rm {} \;
 
 ### Delete broken symlinks
-find -L . -type l -delete
+  find -L . -type l -delete
 
 ### Find big files 
-find / -type f -size +20000k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+  find / -type f -size +20000k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
 
 ### Insert first line on a big file
-sed -i '1iSET foreign_key_checks = 0;' big_file.sql
+  sed -i '1iSET foreign_key_checks = 0;' big_file.sql
 
 ### Discover a disk UUID on ubuntu
-blkid /dev/sdb1
+  blkid /dev/sdb1
 
-### DD progress
-watch -n5 'sudo kill -USR1 $(pgrep ^dd)'
-[source](http://askubuntu.com/questions/215505/how-do-you-monitor-the-progress-of-dd)
+### DD progress [source](http://askubuntu.com/questions/215505/how-do-you-monitor-the-progress-of-dd)
+  watch -n5 'sudo kill -USR1 $(pgrep ^dd)'
 
 ### List ethernet interfaces
-ip link show
+  ip link show
 
 ### List fonts on linux
-fc-list
+  fc-list
 
 ### Extract a directory from a tarball archive
-tar -xvzf mytar.ball.tar.gz -C /tmp/destination home/directory/to/get
+  tar -xvzf mytar.ball.tar.gz -C /tmp/destination home/directory/to/get
 
 ### Merge multiple PDF into one
-gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=finished.pdf file1.pdf file2.pdf *.pdf
+  gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=finished.pdf file1.pdf file2.pdf *.pdf
 
 Images tips
 -----------
