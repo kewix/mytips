@@ -6,13 +6,21 @@ Linux tips
 
 ### Recursively chmod directories only
 find . -type d -exec chmod 755 {} \;
+
 ### Recursively chmod files only
 find . -type f -exec chmod 644 {} \;
+
 ### Recursively rm *.tar.gz
 find . -name "*.tar.gz" -exec rm {} \;
 
 ### Delete broken symlinks
 find -L . -type l -delete
+
+### Find big files 
+find / -type f -size +20000k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+
+### Insert first line on a big file
+sed -i '1iSET foreign_key_checks = 0;' big_file.sql
 
 ### Discover a disk UUID on ubuntu
 blkid /dev/sdb1
@@ -21,11 +29,17 @@ blkid /dev/sdb1
 watch -n5 'sudo kill -USR1 $(pgrep ^dd)'
 [source](http://askubuntu.com/questions/215505/how-do-you-monitor-the-progress-of-dd)
 
-### list ethernet interfaces
+### List ethernet interfaces
 ip link show
 
 ### List fonts on linux
 fc-list
+
+### Extract a directory from a tarball archive
+tar -xvzf mytar.ball.tar.gz -C /tmp/destination home/directory/to/get
+
+### Merge multiple PDF into one
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=finished.pdf file1.pdf file2.pdf *.pdf
 
 Images tips
 -----------
@@ -48,6 +62,15 @@ apt-get -o Acquire::http::Dl-Limit=100 update && apt-get -o Acquire::http::Dl-Li
 
 ### Make space and remove old kernels
 dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt-get -y purge
+
+### Reconfigure timezone
+dpkg-reconfigure tzdata
+
+### Check package version
+apt-cache policy vlc
+
+### Install specific version
+apt-cache install vlc=2.0.6-1
 
 GIT tips
 --------
@@ -85,6 +108,9 @@ echo $xml->asXML();
 
 Apache tips
 -----------
+
+### List apache2 loaded modules
+apache2ctl -t -D DUMP_MODULES
 
 ### Set UTF-8 HTTP header by default in apache
 nano /etc/apache2/conf.d/charset
