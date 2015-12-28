@@ -1,4 +1,3 @@
-# mytips
 Tricks & tips
 =================
 
