@@ -65,7 +65,7 @@ Linux tips
     
 ### Recode a bad encoded UTF-8 file 
 
-    recode -f -v "UTF8..ISO-8859-15" demo.sql
+    recode -f -v "UTF8..ISO-8859-15" demo.sql*
     
 Images tips
 -----------
@@ -118,6 +118,18 @@ then disable it in /etc/sysctl.conf
 reload sysctl
 
     sudo sysctl -p
+    
+### Fix ssl cacert bug on curl and test with openssl
+Error message : "curl: (60) SSL certificate problem: unable to get local issuer certificate"
+Reconfigure package
+
+    dpkg-reconfigure ca-certificates
+Rebuild certs
+
+    update-ca-certificates -f
+Test with openssl client
+
+    openssl s_client -host deb.nodesource.com -port 443
     
 GIT tips
 --------
