@@ -82,6 +82,7 @@ Images tips
 
     find . -name "*.png" -exec advpng -4 -z {} \;
     find . -name \*.jpg -exec jpegoptim -p {} \; -or -name \*.jpeg  -exec jpegoptim -p {} \;
+    find . -name \*.jpg -exec jpegoptim -m85 --strip-all --all-progressive -p {} \; -or -name \*.jpeg  -exec jpegoptim -m85 --strip-all --all-progressive -p {} \;
     
 Ubuntu & debian tips
 --------------------
