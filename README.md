@@ -84,6 +84,12 @@ Images tips
     find . -name \*.jpg -exec jpegoptim -p {} \; -or -name \*.jpeg  -exec jpegoptim -p {} \;
     find . -name \*.jpg -exec jpegoptim -m85 --strip-all --all-progressive -p {} \; -or -name \*.jpeg  -exec jpegoptim -m85 --strip-all --all-progressive -p {} \;
     
+### Convert .psd to png
+
+    convert example.psd out_%d.png
+    convert example.psd out_%d.png -coalesce 
+    convert example.psd out.png -flatten
+    
 Ubuntu & debian tips
 --------------------
 
