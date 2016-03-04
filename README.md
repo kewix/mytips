@@ -100,6 +100,10 @@ Ubuntu & debian tips
 ### Make space and remove old kernels
 
     dpkg --get-selections|grep 'linux-image*'|awk '{print $1}'|egrep -v "linux-image-$(uname -r)|linux-image-generic" | while read n;do apt-get -y remove $n;done
+    
+Since 14.04 
+    
+    apt-get autoremove
 
 ### Reconfigure timezone
 
