@@ -16,7 +16,7 @@ export LD_LIBRARY_PATH=/usr/lib/vmware/lib/libglibmm-2.4.so.1
 
 after the line export PRODUCT_NAME...
 
-# Compile vmware module 
+# Compile vmmnet module 
 https://communities.vmware.com/thread/516196?start=0&tstart=0
 
 
@@ -36,6 +36,35 @@ https://communities.vmware.com/thread/516196?start=0&tstart=0
  
 	tar -uvf vmnet.tar vmnet-only/vmnetInt.h
  	rm -rf vmnet-only/
+ 	
+# Compile vmmon module  (Ubuntu 16.04) 
 
-# Optimize perfs
-http://costatechnet.blogspot.pt/2015/10/vmware-vmx-eating-cpu-100-and-freezes.html
+If you get this error : 
+/tmp/modconfig-xxx/vmmon-only/linux/driver.c: In function ‘cleanup_module’:
+/tmp/modconfig-xxx/vmmon-only/linux/driver.c:403:8: error: void value not ignored as it ought to be
+    if (misc_deregister(&linuxState.misc)) {
+
+
+	sudo -E -s
+ 
+	cd /usr/lib/vmware/modules/source/ 
+ 
+	cp vmmon.tar vmmon.tar.original
+ 
+	tar xvf vmmon.tar vmmon-only/linux/driver.c
+	nano vmmon-only/linux/driver.c
+	
+	Replace content line 403 with this :
+	#ifdef VMX86_DEVEL
+	   unregister_chrdev(linuxState.major, linuxState.deviceName);
+	#else
+	   misc_deregister(&linuxState.misc);
+	//   if (misc_deregister(&linuxState.misc)) {
+	//      Warning("Module %s: error unregistering\n", linuxState.deviceName);
+	//   }
+	#endif
+
+	tar -uvf vmmon.tar vmmon-only/linux/driver.c
+ 	rm -rf vmmon-only/
+ 	
+ 	sudo vmplayer
