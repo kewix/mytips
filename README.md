@@ -247,3 +247,13 @@ And this if you want to force some indexes
 
     FROM `postings` FORCE INDEX (ix_active_offtopic)
     
+CSS tips
+--------
+
+### CSS selector unicity check
+
+    find . -name "​*.css" -exec grep -P -o "^.*​?{" {} \;|grep -P-o "[^{]*"|sort|uniq -cd|sort -n
+    
+### CSS cleanup
+    
+    http://html.fwpolice.com/css/
