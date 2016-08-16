@@ -84,6 +84,10 @@ Images tips
     find . -name \*.jpg -exec jpegoptim -p {} \; -or -name \*.jpeg  -exec jpegoptim -p {} \;
     find . -name \*.jpg -exec jpegoptim -m85 --strip-all --all-progressive -p {} \; -or -name \*.jpeg  -exec jpegoptim -m85 --strip-all --all-progressive -p {} \;
     
+### Optimize only new jpg since yesterday
+    
+    find . -type f -mtime -8 -name \*.jpg -exec jpegoptim -m85 --strip-all --all-progressive -p {} \; -exec chown www-data:www-data {} \; -exec chmod g+rw,o+r {} \;  -or -name \*.jpeg  -exec jpegoptim -m85 --strip-all --all-progressive -p {} \; -exec chown www-data:www-data {} \; -exec chmod g+rw,o+r {} \; 
+    
 ### Convert .psd to png
 
     convert example.psd out_%d.png
