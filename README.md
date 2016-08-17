@@ -94,6 +94,13 @@ Images tips
     convert example.psd out_%d.png -coalesce 
     convert example.psd out.png -flatten
     
+### Remove color profile
+
+This command will convert an image with a special color profile (i.e. Adobe RGB 1998) to one with no color profile but the same effective colors:
+
+    jpegicc -q100 input.jpg output.jpg
+
+    
 Ubuntu & debian tips
 --------------------
 
