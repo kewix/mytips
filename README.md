@@ -218,6 +218,10 @@ Apache tips
 
     apache2ctl -t -D DUMP_MODULES
 
+### List all vhosts
+
+    apache2ctl -t -D DUMP_VHOSTS
+
 ### Set UTF-8 HTTP header by default in apache
 
     nano /etc/apache2/conf.d/charset
