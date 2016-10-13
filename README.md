@@ -214,6 +214,10 @@ PHP tips
 Apache tips
 -----------
 
+### List apache2 conf
+
+    apachectl -V
+
 ### List apache2 loaded modules
 
     apache2ctl -t -D DUMP_MODULES
