@@ -1,4 +1,4 @@
-#Nateev .bashrc
+#Kewix .bashrc
 
 #aliases
 alias rm='rm -i'
@@ -72,8 +72,15 @@ extract () {
    fi
 }
 
+# Z.sh allow to jump between directories
+. /root/scripts/z.sh
+
+# Git prompt
+source /etc/bash_completion.d/git-prompt
+
+
 ########################################################################
-# Matthew's Git Bash Prompt, customized by Mike
+# Matthew's Git Bash Prompt, customized by kewix
 ########################################################################
         RED="\[\033[0;31m\]"
      YELLOW="\[\033[0;33m\]"
@@ -90,9 +97,9 @@ LIGHT_GREEN="\[\033[1;32m\]"
 function parse_git_branch {
   git rev-parse --git-dir &> /dev/null
   git_status="$(git status 2> /dev/null)"
-  branch_pattern="^# On branch ([^${IFS}]*)"
-  remote_pattern="# Your branch is (.*) '"
-  diverge_pattern="# Your branch and (.*) have diverged"
+  branch_pattern="^On branch ([^${IFS}]*)"
+  remote_pattern="Your branch is (.*) '"
+  diverge_pattern="Your branch and (.*) have diverged"
   
   if [[ ! ${git_status}} =~ "working directory clean" ]]; then
     state="${RED}⚡"
