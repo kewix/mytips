@@ -67,6 +67,10 @@ Linux tips
 
     recode -f -v "UTF8..ISO-8859-15" demo.sql*
     
+### Restart network on ubuntu server
+
+    sudo ifdown eth0 && sudo ifup eth0
+    
 Images tips
 -----------
 
