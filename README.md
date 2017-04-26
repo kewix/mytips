@@ -71,6 +71,12 @@ Linux tips
 
     sudo ifdown eth0 && sudo ifup eth0
     
+### SSH mount with 2 hops
+
+    ssh -f userB@systemB -L 20022:systemC:22 -N
+    sshfs -p 20022 userC@localhost:/remote/path/ /mnt/localpath/
+
+    
 Images tips
 -----------
 
