@@ -76,6 +76,10 @@ Linux tips
     ssh -f userB@systemB -L 20022:systemC:22 -N
     sshfs -p 20022 userC@localhost:/remote/path/ /mnt/localpath/
 
+### List HTTP codes from an url list
+
+    xargs -n1 -P 10 curl -o /dev/null --silent --head --write-out '%{http_code};%{url_effective};%{redirect_url};%{time_total}\n' < url-list.txt | tee results.csv
+
     
 Images tips
 -----------
