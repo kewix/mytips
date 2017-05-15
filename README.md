@@ -203,6 +203,10 @@ GIT tips
 
     git config --global branch.autosetuprebase always
     
+### GIT status with modification date
+
+    git status -s | while read mode file; do echo $mode $file $(stat -c %y $file); done
+    
 PHP tips
 --------
 
