@@ -62,6 +62,10 @@ Linux tips
 ### Merge multiple PDF into one
 
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=finished.pdf file1.pdf file2.pdf *.pdf
+
+### Extract pages of a PDF (until page 29 for example)
+    
+    gs -sDEVICE=pdfwrite -dLastPage=29 -dSAFER -o output.pdf input.pdf
     
 ### Recode a bad encoded UTF-8 file 
 
