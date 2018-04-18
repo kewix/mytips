@@ -266,6 +266,12 @@ Apache tips
 
     RewriteCond %{REQUEST_URI} !\.html$
     RewriteRule /(.*)$ /$1.html [R=permanent,L]
+    
+### Rewrite the REQUEST with index.php to / (root)
+
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index.php/page/index/home/home
+    RewriteRule ^index.php / [R=301,L]
+
 
 ### Disable appspot.com web proxy
 
