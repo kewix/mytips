@@ -4,6 +4,10 @@ Tricks & tips
 Linux tips
 ----------
 
+### Know bluetooth version
+
+    hciconfig -a
+
 ### Set ACL (Recursive, default, modify) for www-data group  and check ACL
 
     setfacl -Rdm g:www-data:rw .
