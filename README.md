@@ -36,6 +36,12 @@ Linux tips
 ### Find big files 
 
     find / -type f -size +20000k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+    find -xdev -size +1000000 -ls
+    
+### Find deleted files but always linked after rm
+    
+    https://serverfault.com/questions/232525/df-in-linux-not-showing-correct-free-space-after-file-removal
+    lsof +L1
     
 ### Replace backslashes in filenames
 
