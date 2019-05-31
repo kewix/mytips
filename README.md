@@ -54,6 +54,10 @@ Linux tips
 ### Replace an occurence in all files with SED
 
     sed -i 's/old-word/new-word/g' *.txt
+    
+### Rename files with spaces (remove -n when ok)
+
+    rename -n "s/ /_/g" *
 
 ### Discover a disk UUID on ubuntu
 
